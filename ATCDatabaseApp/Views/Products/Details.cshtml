@@ -1,0 +1,106 @@
+﻿@model ATCDatabaseApp.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ISContact.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISContact.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hardware)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hardware)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Software)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Software)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenewalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenewalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActiveStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ATCStaff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATCStaff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VendorInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VendorInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
