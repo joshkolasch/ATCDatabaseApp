@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ATCDatabaseApp.Models
 {
     public class Accessibility
     {
-        public int ID { get; set; }
-
         [Display(Name ="Product ID")]
+        [Key, ForeignKey("Product")]
         public int ProductID { get; set; }
 
         public string Dragon { get; set; }
@@ -22,5 +22,8 @@ namespace ATCDatabaseApp.Models
         public string NVDA { get; set; }
 
         public string Zoomtext { get; set; }
+
+
+        public virtual Product Product { get; set; }
     }
 }

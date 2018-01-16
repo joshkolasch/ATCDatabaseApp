@@ -34,9 +34,13 @@ namespace ATCDatabaseApp.DAL
 
             var accessibilities = new List<Accessibility>
             {
-                new Accessibility{ID=1, ProductID=1, Dragon="Yes", Jaws="Yes", Kurzweil="Yes", NVDA="Yes", Zoomtext="Yes" },
-                new Accessibility{ID=2, ProductID=2, Dragon="No", Jaws="Yes", Kurzweil="Buggy", NVDA="Yes", Zoomtext="Not Tested" },
-                new Accessibility{ID=3, ProductID=3, Dragon="Not Tested", Jaws="Yes", Kurzweil="Not Applicable", NVDA="Yes", Zoomtext="No" }
+                //new Accessibility{ID=1, ProductID=1, Dragon="Yes", Jaws="Yes", Kurzweil="Yes", NVDA="Yes", Zoomtext="Yes" },
+                //new Accessibility{ID=2, ProductID=2, Dragon="No", Jaws="Yes", Kurzweil="Buggy", NVDA="Yes", Zoomtext="Not Tested" },
+                //new Accessibility{ID=3, ProductID=3, Dragon="Not Tested", Jaws="Yes", Kurzweil="Not Applicable", NVDA="Yes", Zoomtext="No" }
+
+                new Accessibility{ProductID=1, Dragon="Yes", Jaws="Yes", Kurzweil="Yes", NVDA="Yes", Zoomtext="Yes" },
+                new Accessibility{ProductID=2, Dragon="No", Jaws="Yes", Kurzweil="Buggy", NVDA="Yes", Zoomtext="Not Tested" },
+                new Accessibility{ProductID=3, Dragon="Not Tested", Jaws="Yes", Kurzweil="Not Applicable", NVDA="Yes", Zoomtext="No" }
             };
 
             accessibilities.ForEach(a => context.Accessibilities.Add(a));
