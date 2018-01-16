@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ATCDatabaseApp.Models
 {
@@ -9,6 +11,7 @@ namespace ATCDatabaseApp.Models
     {
         public int ID { get; set; }
 
+        [Display(Name ="Product Name")]
         public string ProductName { get; set; }
 
         public string Location { get; set; }
@@ -17,18 +20,25 @@ namespace ATCDatabaseApp.Models
 
         public string Software { get; set; }
 
+        [Display(Name ="Purchase Date")]
+        [DataType(DataType.Date)]
         public DateTime PurchaseDate { get; set; }
 
+        [Display(Name = "Renewal Date")]
+        [DataType(DataType.Date)]
         public DateTime RenewalDate { get; set; }
 
+        [Display(Name ="Status")]
         public string ActiveStatus { get; set; }
 
+        [Display(Name ="ATC Staff")]
         public string ATCStaff { get; set; }
 
         public Nullable<int> ISContactID { get; set; }
 
         public string Notes { get; set; }
 
+        [Display(Name ="Vendor Info")]
         public string VendorInfo { get; set; }
         
         public virtual ISContact ISContact { get; set; }
