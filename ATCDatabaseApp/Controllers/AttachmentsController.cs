@@ -18,7 +18,8 @@ namespace ATCDatabaseApp.Controllers
         // GET: Attachments
         public ActionResult Index()
         {
-            return View(db.Attachments.ToList());
+            var attachments = db.Attachments.Include(a => a.Product);
+            return View(attachments.ToList());
         }
 
         // GET: Attachments/Details/5
@@ -39,6 +40,7 @@ namespace ATCDatabaseApp.Controllers
         // GET: Attachments/Create
         public ActionResult Create()
         {
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace ATCDatabaseApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", attachment.ProductID);
             return View(attachment);
         }
 
@@ -71,6 +74,7 @@ namespace ATCDatabaseApp.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", attachment.ProductID);
             return View(attachment);
         }
 
@@ -87,6 +91,7 @@ namespace ATCDatabaseApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", attachment.ProductID);
             return View(attachment);
         }
 
