@@ -242,6 +242,7 @@
     <Content Include="Views\Attachments\Details.cshtml" />
     <Content Include="Views\Attachments\Edit.cshtml" />
     <Content Include="Views\Attachments\Index.cshtml" />
+    <Content Include="Views\Home\QueryProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
