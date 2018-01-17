@@ -24,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Dragon, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Dragon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Dragon, ViewData["AccessibilityTypes"] as SelectList)
                 @Html.ValidationMessageFor(model => model.Dragon, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Jaws, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Jaws, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Jaws, ViewData["AccessibilityTypes"] as SelectList)
                 @Html.ValidationMessageFor(model => model.Jaws, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Kurzweil, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Kurzweil, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Kurzweil, ViewData["AccessibilityTypes"] as SelectList)
                 @Html.ValidationMessageFor(model => model.Kurzweil, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -48,7 +48,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NVDA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NVDA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.NVDA, ViewData["AccessibilityTypes"] as SelectList)
                 @Html.ValidationMessageFor(model => model.NVDA, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Zoomtext, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Zoomtext, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Zoomtext, ViewData["AccessibilityTypes"] as SelectList)
                 @Html.ValidationMessageFor(model => model.Zoomtext, "", new { @class = "text-danger" })
             </div>
         </div>
