@@ -14,6 +14,9 @@ namespace ATCDatabaseApp.Models
         [Display(Name ="Product Name")]
         public string ProductName { get; set; }
 
+        [Display(Name ="Version #")]
+        public string VersionNumber { get; set; }
+
         public string Location { get; set; }
 
         public string Hardware { get; set; }
@@ -22,11 +25,11 @@ namespace ATCDatabaseApp.Models
 
         [Display(Name ="Purchase Date")]
         [DataType(DataType.Date)]
-        public DateTime PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
 
         [Display(Name = "Renewal Date")]
         [DataType(DataType.Date)]
-        public DateTime RenewalDate { get; set; }
+        public DateTime? RenewalDate { get; set; }
 
         [Display(Name ="Status")]
         public string ActiveStatus { get; set; }
@@ -45,6 +48,7 @@ namespace ATCDatabaseApp.Models
         public virtual ISContact ISContact { get; set; }
         public virtual ICollection<Attachment> Attachments { get; set; }
         public virtual Accessibility Accessibility { get; set; }
+        
 
     }
 }

@@ -9,14 +9,7 @@
 <div>
     <h4>Product</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ISContact.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ISContact.Name)
-        </dd>
+    <dl class="dl-horizontal col-md-4">
 
         <dt>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -24,6 +17,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VersionNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersionNumber)
         </dd>
 
         <dt>
@@ -83,6 +84,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ISContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISContact.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Notes)
         </dt>
 
@@ -98,6 +107,48 @@
             @Html.DisplayFor(model => model.VendorInfo)
         </dd>
 
+    </dl>
+
+    <dl class="dl-horizontal col-md-4">
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility.Dragon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility.Dragon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility.Jaws)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility.Jaws)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility.Kurzweil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility.Kurzweil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility.NVDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility.NVDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility.Zoomtext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility.Zoomtext)
+        </dd>
     </dl>
 </div>
 <p>
