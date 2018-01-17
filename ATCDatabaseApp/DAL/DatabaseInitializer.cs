@@ -71,8 +71,8 @@ namespace ATCDatabaseApp.DAL
             var requesters = new List<Requester>
             {
                 new Requester{ID=1, Name= "Helga Flowty", DepartmentID=1, PhoneNumber="555-4444", Email="hflowty@cbc.com"},
-                new Requester{ID=2, Name= "Gerald Reach", DepartmentID=1, PhoneNumber="555-4443", Email="greach@cbc.com"},
-                new Requester{ID=3, Name= "Arthur Blast", DepartmentID=1, PhoneNumber="555-4442", Email="ablast@cbc.com"}
+                new Requester{ID=2, Name= "Gerald Reach", DepartmentID=3, PhoneNumber="555-4443", Email="greach@cbc.com"},
+                new Requester{ID=3, Name= "Arthur Blast", DepartmentID=4, PhoneNumber="555-4442", Email="ablast@cbc.com"}
             };
 
             requesters.ForEach(r => context.Requesters.Add(r));

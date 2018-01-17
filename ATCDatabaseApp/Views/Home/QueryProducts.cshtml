@@ -1,0 +1,134 @@
+﻿@model IEnumerable<ATCDatabaseApp.Models.Product>
+
+@{
+    ViewBag.Title = "QueryProducts";
+}
+
+<h2>Query Products</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Product Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Product Name", "QueryProducts", new { sortOrder = ViewBag.NameSortParam })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RenewalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActiveStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATCStaff)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessibility.Jaws)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessibility.NVDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessibility.Dragon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessibility.Zoomtext)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessibility.Kurzweil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+
+    </tr>
+
+    @{
+        int count = 0;
+        var colors = new List<string> { "background-color:powderblue;", "background-color:silver;" };
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr style=@colors[count]>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RenewalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ATCStaff)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISContact.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessibility.Jaws)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessibility.NVDA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessibility.Dragon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessibility.Zoomtext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accessibility.Kurzweil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            @{ /*
+                 <td>
+
+                     @try
+                 {
+                     foreach (var a in item.Attachments)
+                     {
+                         <!--TODO: Currently with the test data this won't work because the file path uses '/' forward slashes instead of '\' back slashes. (Silly Windows) -->
+                         <a href="@a.FilePath">@Html.DisplayFor(modelItem => a.FilePath)/@Html.DisplayFor(modelItem => a.FileName)</a>
+                 }
+             }
+             catch { }
+                 </td> */
+            }
+            <td>
+                @Html.ActionLink("Details", "Details", "Products", new { id = item.ID }, null)
+            </td>
+
+            @{
+                count++;
+                if (count >= colors.Count())
+                {
+                    count = 0;
+                }
+            }
+
+
+
+        </tr>
+    }
+
+</table>
