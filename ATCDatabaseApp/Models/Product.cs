@@ -41,6 +41,7 @@ namespace ATCDatabaseApp.Models
         [Display(Name ="Vendor Info")]
         public string VendorInfo { get; set; }
         
+        [Display(Name ="IS Contact")]
         public virtual ISContact ISContact { get; set; }
         public virtual ICollection<Attachment> Attachments { get; set; }
         public virtual Accessibility Accessibility { get; set; }
