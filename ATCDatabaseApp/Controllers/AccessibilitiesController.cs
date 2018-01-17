@@ -15,6 +15,16 @@ namespace ATCDatabaseApp.Controllers
     {
         private ProductContext db = new ProductContext();
 
+        private SelectList AccessibilityTypes = new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem{Text ="Not Tested", Value = "Not Tested" },
+                    new SelectListItem{Text ="Yes", Value = "Yes" },
+                    new SelectListItem{Text ="No", Value = "No" },
+                    new SelectListItem{Text ="Buggy", Value = "Buggy" },
+                    new SelectListItem{Text ="N/A", Value = "N/A" }
+                }, "Text", "Value", 1);
+
         // GET: Accessibilities
         public ActionResult Index()
         {
@@ -75,6 +85,8 @@ namespace ATCDatabaseApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", accessibility.ProductID);
+            
+            ViewData["AccessibilityTypes"] = AccessibilityTypes;
             return View(accessibility);
         }
 
