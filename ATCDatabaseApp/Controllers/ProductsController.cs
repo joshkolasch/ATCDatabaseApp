@@ -18,7 +18,7 @@ namespace ATCDatabaseApp.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.ISContact);
+            var products = db.Products.Include(p => p.Accessibility).Include(p => p.ISContact);
             return View(products.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace ATCDatabaseApp.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
             return View();
         }
@@ -49,7 +50,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductName,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult Create([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace ATCDatabaseApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             return View(product);
         }
@@ -74,6 +76,7 @@ namespace ATCDatabaseApp.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             return View(product);
         }
@@ -83,7 +86,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductName,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace ATCDatabaseApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             return View(product);
         }
