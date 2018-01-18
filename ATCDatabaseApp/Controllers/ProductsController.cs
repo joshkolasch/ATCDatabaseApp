@@ -15,6 +15,20 @@ namespace ATCDatabaseApp.Controllers
     {
         private ProductContext db = new ProductContext();
 
+        private SelectList hardwareSoftwareValues = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem { Text= "Yes", Value = "Yes",},
+                new SelectListItem{ Text= "No", Value = "No"}
+            }, "Text", "Value", 1);
+
+        private SelectList statusValues = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem { Text= "Active", Value = "Active",},
+                new SelectListItem{ Text= "Inactive", Value = "Inactive"}
+            }, "Text", "Value", 1);
+
         // GET: Products
         public ActionResult Index()
         {
@@ -42,6 +56,8 @@ namespace ATCDatabaseApp.Controllers
         {
             ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
+            ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
+            ViewData["activeStatusDropdown"] = statusValues;
             return View();
         }
 
@@ -78,6 +94,8 @@ namespace ATCDatabaseApp.Controllers
             }
             ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
+            ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
+            ViewData["activeStatusDropdown"] = statusValues;
             return View(product);
         }
 
