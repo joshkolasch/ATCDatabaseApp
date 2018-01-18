@@ -71,7 +71,13 @@ namespace ATCDatabaseApp.Controllers
                         break;
                     }
                 }
-
+                foreach (var pr in db.ProductRequests)
+                {
+                    if(p.ID == pr.ProductID)
+                    {
+                        p.ProductRequests.Add(pr);
+                    }
+                }
             }
             var prod = from p in products
                        select p;

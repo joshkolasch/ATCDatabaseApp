@@ -48,7 +48,7 @@ namespace ATCDatabaseApp.Models
         public virtual ISContact ISContact { get; set; }
         public virtual ICollection<Attachment> Attachments { get; set; }
         public virtual Accessibility Accessibility { get; set; }
-        
+        public virtual ICollection<ProductRequest> ProductRequests { get; set; }
 
     }
 }
