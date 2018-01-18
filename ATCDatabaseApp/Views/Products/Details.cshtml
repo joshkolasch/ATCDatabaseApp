@@ -6,8 +6,8 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
+<div class="row">
+    <h4>Products</h4>
     <hr />
     <dl class="dl-horizontal col-md-4">
 
@@ -110,6 +110,8 @@
     </dl>
 
     <dl class="dl-horizontal col-md-4">
+        <dt><u>Accessibility</u></dt>
+        <dd></dd>
         <dt>
             @Html.DisplayNameFor(model => model.Accessibility.Dragon)
         </dt>
@@ -150,8 +152,37 @@
             @Html.DisplayFor(model => model.Accessibility.Zoomtext)
         </dd>
     </dl>
+
+    <dl class="dl-horizontal col-md-4">
+        <dt><u>Requesters</u></dt>
+        <dd></dd>
+        @{ 
+            foreach(var item in Model.ProductRequests)
+            {
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Requester.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Requester.Name)
+                </dd>
+               <dt>
+                   @Html.DisplayNameFor(modelItem => item.Requester.Department)
+               </dt>
+               <dd>
+                   @Html.DisplayFor(modelItem => item.Requester.Department.Name)
+               </dd>
+
+            }
+        }
+    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <p>
+
+
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to Products", "Index")
+    </p>
+</div>
