@@ -167,8 +167,11 @@ namespace ATCDatabaseApp.Controllers
             {
                 db.Entry(accessibility).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                //return RedirectToAction("CreateWizard", "Requesters", new { accessibility.ProductID });
+                return RedirectToAction("CreateWizard", "ProductRequests", new { id = accessibility.ProductID });
             }
+
             ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", accessibility.ProductID);
             return View(accessibility);
         }
