@@ -247,6 +247,7 @@
     <Content Include="Views\Accessibilities\CreateWizard.cshtml" />
     <Content Include="Views\ProductRequests\CreateWizard.cshtml" />
     <Content Include="Views\Requesters\CreateWizard.cshtml" />
+    <Content Include="Views\Attachments\CreateWizard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

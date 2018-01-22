@@ -165,7 +165,7 @@ namespace ATCDatabaseApp.Controllers
                 db.ProductRequests.Add(productRequest);
                 db.SaveChanges();
                 //TODO: change this redirect to ISContact->CreateWizard
-                return RedirectToAction("Index");
+                return RedirectToAction("CreateWizard", "Attachments", new { productID = productRequest.ProductID });
             }
 
             ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", productRequest.ProductID);
