@@ -10,6 +10,7 @@ namespace ATCDatabaseApp.Models
     {
         public int ID { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Phone Number")]

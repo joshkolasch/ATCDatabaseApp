@@ -17,9 +17,11 @@ namespace ATCDatabaseApp.Models
         public int ProductID { get; set; }
 
         [Display(Name ="File Name")]
+        [Required]
         public string FileName { get; set; }
 
         [Display(Name ="File Path")]
+        [Required]
         public string FilePath { get; set; }
 
 
