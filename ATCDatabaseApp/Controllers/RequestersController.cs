@@ -129,5 +129,37 @@ namespace ATCDatabaseApp.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        public ActionResult CreateWizard(int? productID)
+        {
+            if (productID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.ProductID = productID;
+
+            ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Name");
+            return View();
+            //return View();
+        }
+         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWizard([Bind(Include = "ID,Name,DepartmentID,PhoneNumber,Email")] Requester requester, int? productID)
+        {
+            if(productID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            if (ModelState.IsValid)
+            {
+                db.Requesters.Add(requester);
+                db.SaveChanges();
+                return RedirectToAction("CreateWizard", "ProductRequests", new { id = productID });
+            }
+
+            ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Name", requester.DepartmentID);
+            return View(requester);
+        }
     }
 }

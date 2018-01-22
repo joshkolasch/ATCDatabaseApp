@@ -133,5 +133,45 @@ namespace ATCDatabaseApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //this id is the ProductID
+        public ActionResult CreateWizard(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ProductID = id;
+            ViewBag.ProductName = product.ProductName;
+            ViewBag.RequesterID = new SelectList(db.Requesters, "ID", "Name");
+            return View();
+            /*ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", productRequest.ProductID);
+            ViewBag.RequesterID = new SelectList(db.Requesters, "ID", "Name", productRequest.RequesterID);
+            return View(productRequest);*/
+        }
+        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWizard([Bind(Include = "ID,ProductID,RequesterID")] ProductRequest productRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ProductRequests.Add(productRequest);
+                db.SaveChanges();
+                //TODO: change this redirect to ISContact->CreateWizard
+                return RedirectToAction("CreateWizard", "Attachments", new { productID = productRequest.ProductID });
+            }
+
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", productRequest.ProductID);
+            ViewBag.RequesterID = new SelectList(db.Requesters, "ID", "Name", productRequest.RequesterID);
+            return View(productRequest);
+        }
+
     }
 }

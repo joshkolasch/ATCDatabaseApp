@@ -151,5 +151,37 @@ namespace ATCDatabaseApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult CreateWizard()
+        {
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
+            ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
+            ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
+            ViewData["activeStatusDropdown"] = statusValues;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWizard([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Products.Add(product);
+                db.SaveChanges();
+
+                //Create an accessibility row for this new product with 'Not Tested' as the default values
+                Accessibility accessibility = new Accessibility { ProductID = product.ID, Dragon = "Not Tested", Jaws = "Not Tested", Kurzweil = "Not Tested", NVDA = "Not Tested", Zoomtext = "Not Tested" };
+                db.Accessibilities.Add(accessibility);
+                db.SaveChanges();
+
+                return RedirectToAction("CreateWizard", "Accessibilities", new { id = accessibility.ProductID });
+            }
+            
+
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
+            ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
+            return View(product);
+        }
     }
 }

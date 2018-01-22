@@ -11,6 +11,7 @@ namespace ATCDatabaseApp.Models
         public int ID { get; set; }
 
         [Display(Name = "Department Name")]
+        [Required]
         public string Name { get; set; }
     }
 }

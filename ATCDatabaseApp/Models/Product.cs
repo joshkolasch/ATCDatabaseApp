@@ -12,6 +12,7 @@ namespace ATCDatabaseApp.Models
         public int ID { get; set; }
 
         [Display(Name ="Product Name")]
+        [Required]
         public string ProductName { get; set; }
 
         [Display(Name ="Version #")]

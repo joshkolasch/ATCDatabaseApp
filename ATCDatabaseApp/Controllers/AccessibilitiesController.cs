@@ -141,5 +141,39 @@ namespace ATCDatabaseApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult CreateWizard(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Accessibility accessibility = db.Accessibilities.Find(id);
+            if (accessibility == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", accessibility.ProductID);
+
+            ViewData["AccessibilityTypes"] = AccessibilityTypes;
+            return View(accessibility);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWizard([Bind(Include = "ProductID,Dragon,Jaws,Kurzweil,NVDA,Zoomtext")] Accessibility accessibility)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(accessibility).State = EntityState.Modified;
+                db.SaveChanges();
+                //return RedirectToAction("Index");
+                //return RedirectToAction("CreateWizard", "Requesters", new { accessibility.ProductID });
+                return RedirectToAction("CreateWizard", "ProductRequests", new { id = accessibility.ProductID });
+            }
+
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", accessibility.ProductID);
+            return View(accessibility);
+        }
     }
 }
