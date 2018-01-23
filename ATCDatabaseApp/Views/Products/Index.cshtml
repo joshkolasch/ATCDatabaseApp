@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Products</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateWizard")
 </p>
 <table class="table">
     <tr>
@@ -45,7 +45,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
-        <th>
+        <th class="small-td">
             @Html.DisplayNameFor(model => model.VendorInfo)
         </th>
         <th></th>
