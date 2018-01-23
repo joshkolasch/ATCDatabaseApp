@@ -4,12 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Product Details</h2>
 
 <div class="row">
-    <h4>Products</h4>
     <hr />
-    <dl class="dl-horizontal col-md-4">
+    <dl class="dl-horizontal col-md-3">
 
         <dt>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -109,51 +108,71 @@
 
     </dl>
 
-    <dl class="dl-horizontal col-md-4">
-        <dt><u>Accessibility</u></dt>
+    <div class="col-md-3">
+        <dl class="dl-horizontal">
+            <dt><u>Accessibility</u></dt>
+            <dd></dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.Dragon)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.Dragon)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.Jaws)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.Jaws)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.Kurzweil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.Kurzweil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.NVDA)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.NVDA)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.Zoomtext)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.Zoomtext)
+            </dd>
+        </dl>
+        @Html.ActionLink("Edit Accessibility", "Edit", "Accessibilities", new { id = Model.ID }, new { @class = "btn btn-default", @style = "margin-left:15%;" })
+
+    </div>
+
+    <dl class="dl-horizontal col-md-3">
+        <dt><u>Attachments</u></dt>
         <dd></dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessibility.Dragon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessibility.Dragon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessibility.Jaws)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessibility.Jaws)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessibility.Kurzweil)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessibility.Kurzweil)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessibility.NVDA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessibility.NVDA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessibility.Zoomtext)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessibility.Zoomtext)
-        </dd>
+        @{ 
+            foreach(var item in Model.Attachments)
+            {
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.FileName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </dd>
+            }
+        }
     </dl>
 
-    <dl class="dl-horizontal col-md-4">
+    <dl class="dl-horizontal col-md-3">
         <dt><u>Requesters</u></dt>
         <dd></dd>
         @{ 
