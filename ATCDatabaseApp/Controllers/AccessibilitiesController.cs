@@ -29,6 +29,7 @@ namespace ATCDatabaseApp.Controllers
         public ActionResult Index()
         {
             var accessibilities = db.Accessibilities.Include(a => a.Product);
+            accessibilities = accessibilities.OrderBy(a => a.Product.ProductName);
             return View(accessibilities.ToList());
         }
 

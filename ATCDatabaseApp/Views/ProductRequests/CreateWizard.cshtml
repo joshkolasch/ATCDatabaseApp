@@ -1,45 +1,50 @@
 ﻿@model ATCDatabaseApp.Models.ProductRequest
 
+<div class="row">
+    @using (Html.BeginForm(new { productID = ViewBag.ProductID }))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm(new { productID = ViewBag.ProductID }))
-{
-    @Html.AntiForgeryToken()
+        <div class="form-horizontal col-md-6" style="width:40%;">
+            <h2>Who's Requesting this product?</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Product.ProductName, "Product Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("ProductName", null, new { @readonly = "readonly", @class = "form-control", @style = "outline:none;" })
+                    @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-horizontal">
-        <h4>ProductRequest</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Product.ProductName, "Product Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("ProductName", null, new { @readonly="readonly", @class="form-control", @style="outline:none;"})
-                @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Requester.Name, "Requester Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("RequesterID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RequesterID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+                <div class="col-md-8">
+                    @Html.ActionLink("Skip", "CreateWizard", "Attachments", new { id = ViewBag.ProductID }, new { @class = "btn btn-default" })
+                </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RequesterID, "RequesterID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("RequesterID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.RequesterID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    <div class="col-md-6" style="padding-top:85px;">
+        <h4>Don't see your Requester? Click below to add a new Requester</h4>
+        @Html.ActionLink("Add Requester", "CreateWizard", "Requesters", new { id = ViewBag.ProductID }, new { @class = "btn btn-info" })
     </div>
-}
 
-<div>
-    <p>Don't see your Requester? Click below to add a new Requester</p>
-    @Html.ActionLink("Add Requester", "CreateWizard", "Requesters", new { productID = ViewBag.ProductID}, new { @class="btn btn-info"})
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Accessibilities", "CreateWizard", "Accessibilities", new { id = ViewBag.ProductID }, null)
 </div>
 
 @section Scripts {

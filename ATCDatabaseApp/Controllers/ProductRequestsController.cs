@@ -19,6 +19,7 @@ namespace ATCDatabaseApp.Controllers
         public ActionResult Index()
         {
             var productRequests = db.ProductRequests.Include(p => p.Product).Include(p => p.Requester);
+            productRequests = productRequests.OrderBy(pr => pr.Product.ProductName);
             return View(productRequests.ToList());
         }
 

@@ -18,7 +18,8 @@ namespace ATCDatabaseApp.Controllers
         // GET: Departments
         public ActionResult Index()
         {
-            return View(db.Departments.ToList());
+            var departments = db.Departments.OrderBy(d => d.Name);
+            return View(departments.ToList());
         }
 
         // GET: Departments/Details/5

@@ -19,6 +19,7 @@ namespace ATCDatabaseApp.Controllers
         public ActionResult Index()
         {
             var requesters = db.Requesters.Include(r => r.Department);
+            requesters = requesters.OrderBy(r => r.Name);
             return View(requesters.ToList());
         }
 
@@ -130,13 +131,14 @@ namespace ATCDatabaseApp.Controllers
             base.Dispose(disposing);
         }
         
-        public ActionResult CreateWizard(int? productID)
+        //id is the ProductID
+        public ActionResult CreateWizard(int? id)
         {
-            if (productID == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.ProductID = productID;
+            ViewBag.ProductID = id;
 
             ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Name");
             return View();
@@ -145,9 +147,9 @@ namespace ATCDatabaseApp.Controllers
          
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWizard([Bind(Include = "ID,Name,DepartmentID,PhoneNumber,Email")] Requester requester, int? productID)
+        public ActionResult CreateWizard([Bind(Include = "ID,Name,DepartmentID,PhoneNumber,Email")] Requester requester, int? id)
         {
-            if(productID == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
             }
@@ -155,7 +157,7 @@ namespace ATCDatabaseApp.Controllers
             {
                 db.Requesters.Add(requester);
                 db.SaveChanges();
-                return RedirectToAction("CreateWizard", "ProductRequests", new { id = productID });
+                return RedirectToAction("CreateWizard", "ProductRequests", new { id = id });
             }
 
             ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Name", requester.DepartmentID);

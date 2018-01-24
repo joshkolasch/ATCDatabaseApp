@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateWizard";
 }
 
-<h2>CreateWizard</h2>
+<h2>Set Accessibility Features</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Accessibility</h4>
+        <h3>@Model.Product.ProductName</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProductID)
@@ -66,7 +66,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Create Product", "EditWizard", "Products", new { id = Model.ProductID }, null)
 </div>
 
 @section Scripts {

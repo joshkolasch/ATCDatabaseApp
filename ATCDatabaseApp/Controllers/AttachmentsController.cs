@@ -19,6 +19,7 @@ namespace ATCDatabaseApp.Controllers
         public ActionResult Index()
         {
             var attachments = db.Attachments.Include(a => a.Product);
+            attachments = attachments.OrderBy(a => a.Product.ProductName);
             return View(attachments.ToList());
         }
 
@@ -130,31 +131,32 @@ namespace ATCDatabaseApp.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult CreateWizard(int? productID)
+        //id is productID
+        public ActionResult CreateWizard(int? id)
         {
-            if(productID == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(productID);
+            Product product = db.Products.Find(id);
             if(product == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ProductName = product.ProductName;
 
-            ViewBag.productID = productID;
+            ViewBag.productID = id;
             return View();
         }
 
-
+        //TODO: fix the Viewbag ProductID vs productID [recommend changing ProductID to ProductList and productID to ProductID]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWizard([Bind(Include = "ID,ProductID,FileName,FilePath")] Attachment attachment, int? productID)
+        public ActionResult CreateWizard([Bind(Include = "ID,ProductID,FileName,FilePath")] Attachment attachment, int? id)
         {
             ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName");
             
-            if(productID == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -162,10 +164,10 @@ namespace ATCDatabaseApp.Controllers
             {
                 db.Attachments.Add(attachment);
                 db.SaveChanges();
-                return RedirectToAction("Details", "Products", new { id = productID });
+                return RedirectToAction("Details", "Products", new { id = id });
             }
 
-            ViewBag.productID = productID;
+            ViewBag.productID = id;
             return View(attachment);
         }
     }
