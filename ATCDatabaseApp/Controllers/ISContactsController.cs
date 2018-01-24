@@ -18,7 +18,8 @@ namespace ATCDatabaseApp.Controllers
         // GET: ISContacts
         public ActionResult Index()
         {
-            return View(db.ISContacts.ToList());
+            var isContact = db.ISContacts.OrderBy(i => i.Name);
+            return View(isContact.ToList());
         }
 
         // GET: ISContacts/Details/5

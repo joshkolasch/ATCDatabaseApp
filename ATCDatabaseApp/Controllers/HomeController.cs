@@ -92,7 +92,7 @@ namespace ATCDatabaseApp.Controllers
             }
 
 
-            return View(prod.ToList());
+            return View(prod.OrderBy(p => p.ProductName).ToList());
         }
 
         public ActionResult QueryRequesters()

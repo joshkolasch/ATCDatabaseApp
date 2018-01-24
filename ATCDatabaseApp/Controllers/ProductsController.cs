@@ -158,7 +158,43 @@ namespace ATCDatabaseApp.Controllers
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
             ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
             ViewData["activeStatusDropdown"] = statusValues;
+            
             return View();
+        }
+
+        public ActionResult EditWizard(int? id)
+        {
+            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
+            ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
+            ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
+            ViewData["activeStatusDropdown"] = statusValues;
+            if (id != null)
+            {
+                var product = db.Products.Find(id);
+                if (product != null)
+                {
+                    return View(product);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditWizard([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("CreateWizard", "Accessibilities", new { id = product.ID });
+            }
+            ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
+            return View(product);
         }
 
         [HttpPost]

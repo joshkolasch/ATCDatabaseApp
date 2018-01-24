@@ -6,7 +6,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Attachment</h4>
+        <h2>Add an Attachment</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -33,16 +33,21 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Finish" class="btn btn-default" />
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Finish" class="btn btn-default" style="margin-right:15px;"/>
+                    @Html.ActionLink("Skip", "Details", "Products", new { id = ViewBag.productID }, new { @class = "btn btn-default" })
+                </div>
             </div>
+            
         </div>
+
     </div>
 }
 
 <div>
-   @Html.ActionLink("Skip", "Details", "Products", new {id = ViewBag.productID }, null)
+    @Html.ActionLink("Back to Setting the Requester", "CreateWizard", "ProductRequests", new { id = ViewBag.productID}, null)
 </div>
 
 @section Scripts {

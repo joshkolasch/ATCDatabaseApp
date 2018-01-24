@@ -3,39 +3,39 @@
 }
 
 <div class="jumbotron">
-    <h1>ATC Product Database</h1>
-    <p cless="lead">Record data on all CBC's products</p>
+    <h1 class="col-md-offset-1">ATC Product Database</h1>
+    <p class="lead col-md-offset-1">Record data on all CBC's products</p>
 </div>
 
 
-<div class="row">
+<div class="row" style="text-align:center;">
     <div class="col-md-4">
         <h2>Query the database</h2>
-        <p>@Html.ActionLink("Query Products", "QueryProducts", "Home")</p>
-        <p>@Html.ActionLink("Query Accessibilities", "Index", "Accessibilities")</p>
-        <p>@Html.ActionLink("Query Attachments", "Index", "Attachments")</p>
-        <p>@Html.ActionLink("Query Departments", "Index", "Departments")</p>
-        <p>@Html.ActionLink("Query IS Contacts", "Index", "ISContacts")</p>
-        <p>@Html.ActionLink("Query Product Requests", "Index", "ProductRequests")</p>
-        <p>@Html.ActionLink("Query Requesters", "Index", "Requesters")</p>
+        <p>@Html.ActionLink("Accessibilities", "Index", "Accessibilities")</p>
+        <p>@Html.ActionLink("Attachments", "Index", "Attachments")</p>
+        <p>@Html.ActionLink("Departments", "Index", "Departments")</p>
+        <p>@Html.ActionLink("IS Contacts", "Index", "ISContacts")</p>
+        <p>@Html.ActionLink("Products", "QueryProducts", "Home")</p>
+        <p>@Html.ActionLink("Product Requests", "Index", "ProductRequests")</p>
+        <p>@Html.ActionLink("Requesters", "Index", "Requesters")</p>
     </div>
     <div class="col-md-4">
-        <h2>Add New Entries</h2>
-        <p>@Html.ActionLink("Attachments Database", "Create", "Attachments")</p>
-        <p>@Html.ActionLink("Departments Database", "Create", "Departments")</p>
-        <p>@Html.ActionLink("IS Contact Database", "Create", "ISContacts")</p>
-        <p>@Html.ActionLink("Products Database", "CreateWizard", "Products")</p>
-        <p>@Html.ActionLink("Product Requests Database", "Create", "ProductRequests")</p>
-        <p>@Html.ActionLink("Requesters Database", "Create", "Requesters")</p>
+        <h2>Add New Entries To:</h2>
+        <p>@Html.ActionLink("Attachments", "Create", "Attachments")</p>
+        <p>@Html.ActionLink("Departments", "Create", "Departments")</p>
+        <p>@Html.ActionLink("IS Contact", "Create", "ISContacts")</p>
+        <p>@Html.ActionLink("Products", "CreateWizard", "Products")</p>
+        <p>@Html.ActionLink("Product Requests", "Create", "ProductRequests")</p>
+        <p>@Html.ActionLink("Requesters", "Create", "Requesters")</p>
     </div>
     <div class="col-md-4">
         <h2>Edit Existing Entries</h2>
-        <p>@Html.ActionLink("Accessibilities Database", "Index", "Accessibilities")</p>
-        <p>@Html.ActionLink("Attachments Database", "Index", "Attachments")</p>
-        <p>@Html.ActionLink("Departments Database", "Index", "Departments")</p>
-        <p>@Html.ActionLink("IS Contact Database", "Index", "ISContacts")</p>
-        <p>@Html.ActionLink("Products Database", "Index", "Products")</p>
-        <p>@Html.ActionLink("Product Requests Database", "Index", "ProductRequests")</p>
-        <p>@Html.ActionLink("Requesters Database", "Index", "Requesters")</p>
+        <p>@Html.ActionLink("Accessibilities", "Index", "Accessibilities")</p>
+        <p>@Html.ActionLink("Attachments", "Index", "Attachments")</p>
+        <p>@Html.ActionLink("Departments", "Index", "Departments")</p>
+        <p>@Html.ActionLink("IS Contact", "Index", "ISContacts")</p>
+        <p>@Html.ActionLink("Products", "Index", "Products")</p>
+        <p>@Html.ActionLink("Product Requests", "Index", "ProductRequests")</p>
+        <p>@Html.ActionLink("Requesters", "Index", "Requesters")</p>
     </div>
 </div>
