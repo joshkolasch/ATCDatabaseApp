@@ -11,12 +11,14 @@
 </p>
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VersionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Location)
@@ -58,6 +60,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VersionNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Location)

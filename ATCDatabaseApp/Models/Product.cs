@@ -18,6 +18,9 @@ namespace ATCDatabaseApp.Models
         [Display(Name ="Version #")]
         public string VersionNumber { get; set; }
 
+        [Display(Name ="Serial #")]
+        public string SerialNumber { get; set; }
+
         public string Location { get; set; }
 
         public string Hardware { get; set; }

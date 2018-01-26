@@ -185,7 +185,7 @@ namespace ATCDatabaseApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditWizard([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult EditWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -199,7 +199,7 @@ namespace ATCDatabaseApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWizard([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult CreateWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
