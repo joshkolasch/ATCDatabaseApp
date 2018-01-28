@@ -24,9 +24,9 @@ namespace ATCDatabaseApp.DAL
 
             var products = new List<Product>
             {
-                new Product{ID=1, ProductName="CBC Email", Location="cbcEmail.com", Hardware="No", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ActiveStatus="Active", ATCStaff="Foust One", ISContactID=1, Notes="This has been fully tested", VendorInfo="Contact: James 444-444-9999"},
-                new Product{ID=2, ProductName="CBC Eye Tracker", Location="EyeTracker.com", Hardware="Yes", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ActiveStatus="InActive", ATCStaff="Debrah Two", ISContactID=1, Notes="Bad product. Replaced.", VendorInfo="Contact: Gorge 444-444-9998"},
-                new Product{ID=3, ProductName="Vending Machine", Location="Soda.com", Hardware="Yes", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ActiveStatus="Active", ATCStaff="Pete Three", ISContactID=3, Notes="", VendorInfo="Contact: Fred 444-444-9997. Tech guy: Arnold 444-444-9996"}
+                new Product{ID=1, ProductName="CBC Email", Location="cbcEmail.com", Hardware="No", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ApprovalStatus="Active", ATCStaff="Foust One", ISContactID=1, Notes="This has been fully tested", VendorInfo="Contact: James 444-444-9999"},
+                new Product{ID=2, ProductName="CBC Eye Tracker", Location="EyeTracker.com", Hardware="Yes", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ApprovalStatus="InActive", ATCStaff="Debrah Two", ISContactID=1, Notes="Bad product. Replaced.", VendorInfo="Contact: Gorge 444-444-9998"},
+                new Product{ID=3, ProductName="Vending Machine", Location="Soda.com", Hardware="Yes", Software="Yes", PurchaseDate=DateTime.Parse("01/01/2016"), RenewalDate=DateTime.Parse("01/01/2017"), ApprovalStatus="Active", ATCStaff="Pete Three", ISContactID=3, Notes="", VendorInfo="Contact: Fred 444-444-9997. Tech guy: Arnold 444-444-9996"}
             };
 
             products.ForEach(p => context.Products.Add(p));
