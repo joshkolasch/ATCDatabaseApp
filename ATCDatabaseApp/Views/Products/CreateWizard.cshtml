@@ -79,10 +79,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ActiveStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ApprovalStatus, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.ActiveStatus, ViewData["activeStatusDropdown"] as SelectList, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ActiveStatus, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.ApprovalStatus, ViewData["approvalStatusDropdown"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ApprovalStatus, "", new { @class = "text-danger" })
         </div>
     </div>
 

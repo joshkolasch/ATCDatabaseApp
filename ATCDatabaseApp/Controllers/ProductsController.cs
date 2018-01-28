@@ -25,8 +25,9 @@ namespace ATCDatabaseApp.Controllers
         private SelectList statusValues = new SelectList(
             new List<SelectListItem>
             {
-                new SelectListItem { Text= "Active", Value = "Active",},
-                new SelectListItem{ Text= "Inactive", Value = "Inactive"}
+                new SelectListItem { Text= "Not Approved", Value = "Not Approved",},
+                new SelectListItem{ Text= "Approved", Value = "Approved"},
+                new SelectListItem{ Text= "In Progress", Value = "In Progress" }
             }, "Text", "Value", 1);
 
         // GET: Products
@@ -54,10 +55,10 @@ namespace ATCDatabaseApp.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
             ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
-            ViewData["activeStatusDropdown"] = statusValues;
+            ViewData["approvalStatusDropdown"] = statusValues;
             return View();
         }
 
@@ -66,7 +67,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult Create([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ApprovalStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +76,7 @@ namespace ATCDatabaseApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             return View(product);
         }
@@ -92,10 +93,10 @@ namespace ATCDatabaseApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
-            ViewData["activeStatusDropdown"] = statusValues;
+            ViewData["approvalStatusDropdown"] = statusValues;
             return View(product);
         }
 
@@ -104,7 +105,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductName,VersionNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ApprovalStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +113,7 @@ namespace ATCDatabaseApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon", product.ID);
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name", product.ISContactID);
             return View(product);
         }
@@ -154,20 +155,20 @@ namespace ATCDatabaseApp.Controllers
 
         public ActionResult CreateWizard()
         {
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
             ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
-            ViewData["activeStatusDropdown"] = statusValues;
+            ViewData["approvalStatusDropdown"] = statusValues;
             
             return View();
         }
 
         public ActionResult EditWizard(int? id)
         {
-            ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
+            //ViewBag.ID = new SelectList(db.Accessibilities, "ProductID", "Dragon");
             ViewBag.ISContactID = new SelectList(db.ISContacts, "ID", "Name");
             ViewData["hardwareSoftwareDropdown"] = hardwareSoftwareValues;
-            ViewData["activeStatusDropdown"] = statusValues;
+            ViewData["approvalStatusDropdown"] = statusValues;
             if (id != null)
             {
                 var product = db.Products.Find(id);
@@ -185,7 +186,7 @@ namespace ATCDatabaseApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult EditWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ApprovalStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -199,7 +200,7 @@ namespace ATCDatabaseApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ActiveStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
+        public ActionResult CreateWizard([Bind(Include = "ID,ProductName,VersionNumber,SerialNumber,Location,Hardware,Software,PurchaseDate,RenewalDate,ApprovalStatus,ATCStaff,ISContactID,Notes,VendorInfo")] Product product)
         {
             if (ModelState.IsValid)
             {

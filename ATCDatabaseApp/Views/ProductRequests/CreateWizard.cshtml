@@ -1,7 +1,7 @@
 ﻿@model ATCDatabaseApp.Models.ProductRequest
 
 <div class="row">
-    @using (Html.BeginForm(new { productID = ViewBag.ProductID }))
+    @using (Html.BeginForm(new { id = ViewBag.ProductID }))
     {
         @Html.AntiForgeryToken()
 

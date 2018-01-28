@@ -36,7 +36,7 @@ namespace ATCDatabaseApp.Models
         public DateTime? RenewalDate { get; set; }
 
         [Display(Name ="Status")]
-        public string ActiveStatus { get; set; }
+        public string ApprovalStatus { get; set; }
 
         [Display(Name ="ATC Staff")]
         public string ATCStaff { get; set; }

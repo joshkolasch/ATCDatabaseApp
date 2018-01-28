@@ -19,9 +19,9 @@ namespace ATCDatabaseApp.Controllers
                 new List<SelectListItem>
                 {
                     new SelectListItem{Text ="Not Tested", Value = "Not Tested" },
-                    new SelectListItem{Text ="Yes", Value = "Yes" },
-                    new SelectListItem{Text ="No", Value = "No" },
-                    new SelectListItem{Text ="Buggy", Value = "Buggy" },
+                    new SelectListItem{Text ="Accessible", Value = "Accessible" },
+                    new SelectListItem{Text ="Not Accessible", Value = "Not Accessible" },
+                    new SelectListItem{Text ="Partially Accessible", Value = "Partially Accessible" },
                     new SelectListItem{Text ="N/A", Value = "N/A" }
                 }, "Text", "Value", 1);
 
