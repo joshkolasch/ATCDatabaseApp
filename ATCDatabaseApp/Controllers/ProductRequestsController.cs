@@ -147,9 +147,10 @@ namespace ATCDatabaseApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductID = id;
+            ViewBag.pID = id;
             ViewBag.ProductName = product.ProductName;
             ViewBag.RequesterID = new SelectList(db.Requesters, "ID", "Name");
+            ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", id);
             return View();
             /*ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", productRequest.ProductID);
             ViewBag.RequesterID = new SelectList(db.Requesters, "ID", "Name", productRequest.RequesterID);

@@ -38,7 +38,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Finish" class="btn btn-default" style="margin-right:15px;" />
-                @Html.ActionLink("Skip", "Details", "Products", new { id = ViewBag.productID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Skip", "Details", "Products", new { id = ViewBag.id }, new { @class = "btn btn-default" })
             </div>
         </div>
 
@@ -48,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Setting the Requester", "CreateWizard", "ProductRequests", new { id = ViewBag.productID}, null)
+    @Html.ActionLink("Back to Setting the Requester", "CreateWizard", "ProductRequests", new { id = ViewBag.id}, null)
 </div>
 
 @section Scripts {

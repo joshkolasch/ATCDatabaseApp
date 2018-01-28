@@ -1,7 +1,7 @@
 ﻿@model ATCDatabaseApp.Models.ProductRequest
 
 <div class="row">
-    @using (Html.BeginForm(new { id = ViewBag.ProductID }))
+    @using (Html.BeginForm(new { id = ViewBag.pID }))
     {
         @Html.AntiForgeryToken()
 
@@ -9,10 +9,11 @@
             <h2>Who's Requesting this product?</h2>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID);
             <div class="form-group">
                 @Html.LabelFor(model => model.Product.ProductName, "Product Name", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBox("ProductName", null, new { @readonly = "readonly", @class = "form-control", @style = "outline:none;" })
+                    @Html.DropDownList("ProductID", null, new { @readonly = "readonly", @class = "form-control", @style = "outline:none;" })
                     @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -30,7 +31,7 @@
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
                 <div class="col-md-8">
-                    @Html.ActionLink("Skip", "CreateWizard", "Attachments", new { id = ViewBag.ProductID }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Skip", "CreateWizard", "Attachments", new { id = ViewBag.pID }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>

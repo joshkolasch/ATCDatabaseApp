@@ -10,59 +10,69 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h3>@Model.Product.ProductName</h3>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ProductID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Dragon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Dragon, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Dragon, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h3>@Model.Product.ProductName</h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProductID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Jaws, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Jaws, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Jaws, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Kurzweil, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Kurzweil, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Kurzweil, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NVDA, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.NVDA, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NVDA, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Zoomtext, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Zoomtext, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Zoomtext, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Next" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Dragon, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Dragon, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Dragon, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Jaws, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Jaws, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Jaws, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Kurzweil, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Kurzweil, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Kurzweil, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NVDA, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.NVDA, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NVDA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Zoomtext, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Zoomtext, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Zoomtext, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @{ /*
+    <div class="form-group">
+        @Html.LabelFor(model => model.Product.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Product.Notes, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Product.Notes, "", new { @class = "text-danger" })
+        </div>
+    </div>*/
+        }
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Next" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
