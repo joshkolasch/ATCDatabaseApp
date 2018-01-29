@@ -18,14 +18,14 @@ namespace ATCDatabaseApp.Controllers
         private SelectList hardwareSoftwareValues = new SelectList(
             new List<SelectListItem>
             {
-                new SelectListItem { Text= "Yes", Value = "Yes",},
+                new SelectListItem { Text= "Yes", Value = "Yes"},
                 new SelectListItem{ Text= "No", Value = "No"}
             }, "Text", "Value", 1);
 
         private SelectList statusValues = new SelectList(
             new List<SelectListItem>
             {
-                new SelectListItem { Text= "Not Approved", Value = "Not Approved",},
+                new SelectListItem { Text= "Not Approved", Value = "Not Approved"},
                 new SelectListItem{ Text= "Approved", Value = "Approved"},
                 new SelectListItem{ Text= "In Progress", Value = "In Progress" }
             }, "Text", "Value", 1);

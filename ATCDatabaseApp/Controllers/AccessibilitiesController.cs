@@ -60,7 +60,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,Dragon,Jaws,Kurzweil,NVDA,Zoomtext")] Accessibility accessibility)
+        public ActionResult Create([Bind(Include = "ProductID,StartDate,EndDate,Dragon,Jaws,Kurzweil,NVDA,Zoomtext,ReportCompleted")] Accessibility accessibility)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace ATCDatabaseApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Dragon,Jaws,Kurzweil,NVDA,Zoomtext")] Accessibility accessibility)
+        public ActionResult Edit([Bind(Include = "ProductID,StartDate,EndDate,Dragon,Jaws,Kurzweil,NVDA,Zoomtext,ReportCompleted")] Accessibility accessibility)
         {
             if (ModelState.IsValid)
             {
@@ -162,7 +162,7 @@ namespace ATCDatabaseApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateWizard([Bind(Include = "ProductID,Dragon,Jaws,Kurzweil,NVDA,Zoomtext")] Accessibility accessibility)
+        public ActionResult CreateWizard([Bind(Include = "ProductID,StartDate,EndDate,Dragon,Jaws,Kurzweil,NVDA,Zoomtext,ReportCompleted")] Accessibility accessibility)
         {
             if (ModelState.IsValid)
             {

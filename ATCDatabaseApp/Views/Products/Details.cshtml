@@ -121,6 +121,22 @@
             <dt><u>Accessibility</u></dt>
             <dd></dd>
             <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.StartDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.StartDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.EndDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.EndDate)
+            </dd>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.Accessibility.Dragon)
             </dt>
 
@@ -158,6 +174,14 @@
 
             <dd>
                 @Html.DisplayFor(model => model.Accessibility.Zoomtext)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accessibility.ReportCompleted)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accessibility.ReportCompleted)
             </dd>
         </dl>
         @Html.ActionLink("Edit Accessibility", "Edit", "Accessibilities", new { id = Model.ID }, new { @class = "btn btn-default", @style = "margin-left:15%;" })

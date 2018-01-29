@@ -39,13 +39,13 @@
 
     <div class="col-md-6" style="padding-top:85px;">
         <h4>Don't see your Requester? Click below to add a new Requester</h4>
-        @Html.ActionLink("Add Requester", "CreateWizard", "Requesters", new { id = ViewBag.ProductID }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Add Requester", "CreateWizard", "Requesters", new { id = ViewBag.pID }, new { @class = "btn btn-info" })
     </div>
 
 </div>
 
 <div>
-    @Html.ActionLink("Back to Accessibilities", "CreateWizard", "Accessibilities", new { id = ViewBag.ProductID }, null)
+    @Html.ActionLink("Back to Accessibilities", "CreateWizard", "Accessibilities", new { id = ViewBag.pID }, null)
 </div>
 
 @section Scripts {

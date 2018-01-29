@@ -18,6 +18,30 @@
     @Html.HiddenFor(model => model.ProductID)
 
     <div class="form-group">
+        @Html.LabelFor(model => model.ProductID, "Product Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ProductID", null, new { @class = "form-control", @readonly = "readonly", @style = "outline:none;" })
+            @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.Dragon, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Dragon, ViewData["AccessibilityTypes"] as SelectList, new { @class = "form-control" })
@@ -56,15 +80,24 @@
             @Html.ValidationMessageFor(model => model.Zoomtext, "", new { @class = "text-danger" })
         </div>
     </div>
-    @{ /*
+
     <div class="form-group">
-        @Html.LabelFor(model => model.Product.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ReportCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Product.Notes, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Product.Notes, "", new { @class = "text-danger" })
+            @Html.CheckBoxFor(model => model.ReportCompleted, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ReportCompleted, "", new { @class = "text-danger" })
         </div>
-    </div>*/
-        }
+    </div>
+
+    @{ /*
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Product.Notes, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Product.Notes, "", new { @class = "text-danger" })
+            </div>
+        </div>*/
+    }
 
 
     <div class="form-group">
