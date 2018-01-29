@@ -13,6 +13,12 @@
             @Html.DisplayNameFor(model => model.Product.ProductName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Dragon)
         </th>
         <th>
@@ -27,6 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Zoomtext)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportCompleted)
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +43,12 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Dragon)
@@ -51,8 +66,11 @@
             @Html.DisplayFor(modelItem => item.Zoomtext)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID })
+            @Html.DisplayFor(modelItem => item.ReportCompleted)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductID })
         </td>
     </tr>
 }

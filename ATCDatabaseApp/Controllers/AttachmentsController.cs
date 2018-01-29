@@ -143,15 +143,7 @@ namespace ATCDatabaseApp.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.ProductName = product.ProductName;
-            //ViewBag.pID = new SelectList(db.Products, "ID", "ProductName", product.ID);
-            //ViewBag.ProductName = product.ProductName;
-            //ViewBag.ProductID = id;
-            //ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", id);
             ViewBag.ProductID = new SelectList(db.Products, "ID", "ProductName", id);
-            //var prod = new List<SelectListItem>();
-            //prod.Add(new SelectListItem() { Text = product.ProductName, Value = product.ID.ToString() });
-            //ViewBag.prod = new SelectList(prod, "Value", "Text");
             ViewBag.id = id;
             return View();
         }
@@ -162,6 +154,7 @@ namespace ATCDatabaseApp.Controllers
         public ActionResult CreateWizard([Bind(Include = "ID,ProductID,FileName,FilePath")] Attachment attachment, int? id)
         {
             ViewBag.pID = new SelectList(db.Products, "ID", "ProductName", attachment.ProductID);
+            var product = db.Products.Find(id);
             
             if(id == null)
             {
@@ -171,6 +164,16 @@ namespace ATCDatabaseApp.Controllers
             {
                 db.Attachments.Add(attachment);
                 db.SaveChanges();
+
+                //update Notes section
+                /*if (!attachment.Product.Notes.Equals(product.Notes))
+                {
+                    product.Notes = attachment.Product.Notes;
+                    db.Entry(product).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }*/
+
                 return RedirectToAction("Details", "Products", new { id = id });
             }
 
